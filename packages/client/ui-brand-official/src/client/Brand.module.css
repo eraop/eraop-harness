@@ -1,0 +1,11 @@
+.artwork {
+  display: block;
+  flex: none;
+}
+
+.banner {
+  display: block;
+  width: 360px;
+  max-width: 100%;
+  height: auto;
+}

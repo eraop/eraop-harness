@@ -1,16 +1,16 @@
-/** Official DeepSeek Harness occupants: the profile-gated sidebar brand slots and the home whale frame layer. */
+/** Eraop Harness sidebar artwork, home banner and home whale frame layer. */
 import type { Context as ClientContext } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
 import type {} from '@deepseek-ai/dsh-client-ui-sidebar/client'
 import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
 import { PixelWhale } from './home-whale/PixelWhale.tsx'
-import { OfficialBrandMark, OfficialBrandName } from './Brand.tsx'
+import { OfficialBrandBanner, OfficialBrandMark, OfficialBrandName } from './Brand.tsx'
 
 /** Required service: the UI slot registry. */
 export const inject = ['slots']
 
 /**
- * Fill official sidebar artwork and frame the blank home with the whale decoration.
+ * Fill sidebar artwork and the home banner, and frame the home with the whale decoration.
  * @param ctx - Client root context.
  */
 export function apply(ctx: ClientContext): void {
@@ -18,7 +18,8 @@ export function apply(ctx: ClientContext): void {
     name: 'conversation.hero.frame',
     id: 'pixel-whale',
   }, PixelWhale))
-  if (process.env.DSH_CLIENT_BUILD_PROFILE !== 'official') return
+  ctx.slots.inject('conversation.hero.brand.banner', () =>
+    ctx.slots.register({ name: 'conversation.hero.brand.banner' }, OfficialBrandBanner))
   ctx.slots.inject('sidebar.brand.mark', () =>
     ctx.slots.inject('sidebar.brand.name', function* () {
       yield ctx.slots.register({ name: 'sidebar.brand.mark' }, OfficialBrandMark)

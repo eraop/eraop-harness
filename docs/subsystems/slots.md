@@ -200,6 +200,7 @@ Factory: conversation.content [ConversationContent]
 │     └─ calls Factory: conversation.user.text
 ├─ conversation.hero.frame [hoc]
 │  └─ id=pixel-whale [PixelWhale]
+├─ conversation.hero.brand.banner
 ├─ conversation.hero.brand.mark
 ├─ conversation.hero.workspace
 │  └─ conversation.hero.workspace.directoryFlow
